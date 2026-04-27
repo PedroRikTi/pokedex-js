@@ -1,0 +1,94 @@
+/* container da página */
+.pokemon-detail {
+    padding: 1rem;
+}
+
+/* card principal */
+.card {
+    border-radius: 1.5rem;
+    padding: 1.5rem;
+    color: white;
+    position: relative;
+}
+
+/* nome */
+.name {
+    text-transform: capitalize;
+    font-size: 1.8rem;
+}
+
+/* número */
+.number {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    opacity: 0.5;
+}
+
+/* imagem */
+.card img {
+    display: block;
+    margin: 1rem auto;
+    width: 150px;
+}
+
+/* tipos */
+.types {
+    display: flex;
+    justify-content: center;
+    gap: .5rem;
+}
+
+/* tipo individual */
+.type {
+    padding: .4rem .8rem;
+    border-radius: 1rem;
+    color: white;
+    font-size: .8rem;
+}
+
+/* abas */
+.tabs {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 1rem;
+}
+
+.tabs button {
+    background: none;
+    border: none;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* conteúdo */
+.tab-content {
+    background: white;
+    color: black;
+    padding: 1rem;
+    border-radius: 1rem;
+    margin-top: 1rem;
+}
+
+/* esconder */
+.hidden {
+    display: none;
+}
+
+/* stats */
+.stat {
+    margin-bottom: .5rem;
+}
+
+.bar {
+    background: #ddd;
+    height: 8px;
+    border-radius: 1rem;
+    overflow: hidden;
+}
+
+.fill {
+    height: 100%;
+    background: #4caf50;
+}
