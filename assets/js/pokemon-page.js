@@ -71,9 +71,7 @@ pokeApi.getPokemons(id - 1, 1).then((pokemons) => {
     })
   }, 100);
 });
-/*
-    Mostra uma aba e esconde a outra
-*/
+/* Mostra uma aba e esconde a outra*/
 function showTab(tab) {
     document.getElementById('about').classList.add('hidden')
     document.getElementById('stats').classList.add('hidden')

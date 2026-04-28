@@ -3,7 +3,7 @@
         box-sizing: border-box;
 }
 
-body{
+body {
         background-color: #f6f8fc;
 }
 
@@ -12,11 +12,11 @@ body{
         height: 100vh;
         padding: 1rem;
         background-color: white;
-        
+
 }
 
-@media screen and (min-width: 992px){
-        .content{
+@media screen and (min-width: 992px) {
+        .content {
                 max-width: 992px;
                 height: auto;
                 margin: 1rem auto;
@@ -24,3 +24,21 @@ body{
         }
 }
 
+.title {
+        text-align: center;
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin: 1rem 0;
+        letter-spacing: 2px;
+        animation: glowTitle 3s infinite alternate;
+}
+
+@keyframes glowTitle {
+        from {
+                text-shadow: 0 0 5px rgba(255, 61, 61, 0.4);
+        }
+
+        to {
+                text-shadow: 0 0 20px rgba(255, 61, 61, 0.8);
+        }
+}
