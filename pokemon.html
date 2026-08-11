@@ -2,30 +2,19 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <title>Detalhe do Pokemon</title>
-
-    <!-- pegando o css -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhe do Pokémon</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/assets/css/global.css">
-
-    <!-- novo css -->
     <link rel="stylesheet" href="/assets/css/pokemon.css">
 </head>
-
 <body>
-    
-    <!-- container onde vamos inserir o pokemon -->
-    <section class="pokemon-detail" id="pokemonDetail">
-        <!-- conteúdo será inserido via JS -->
-    </section>
-    <!-- botão de voltar -->
-    <button class="back" onclick="history.back()">←</button>
-    
-    <!-- utilizando o JS -->
+    <main class="pokemon-detail" id="pokemonDetail" aria-live="polite"></main>
+    <button class="back" type="button" aria-label="Voltar" onclick="history.back()">←</button>
     <script src="/assets/js/pokemon-model.js"></script>
     <script src="/assets/js/poke-api.js"></script>
-
-    <!-- novo JS -->
     <script src="/assets/js/pokemon-page.js"></script>
-
 </body>
 </html>

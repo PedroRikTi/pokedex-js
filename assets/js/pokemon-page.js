@@ -1,79 +1,37 @@
-/*
-    Pegamndo os parâmetros da URL
-    Exemplo: pokemon.html?id=1
-*/
 const params = new URLSearchParams(window.location.search);
-
-/*
-    Pegando o ID do pokemon
-*/
 const id = params.get("id");
-
-/*
-   Pegando a div onde vamos colocar o conteúdo
-*/
 const container = document.getElementById("pokemonDetail");
 
-/*
-    Buscar o pokemon na API
-
-    Estamos reutilizando sua função:
-    getPokemons(offset, limit)
-
-    Para pegar só 1:
-    offset = id - 1
-    limit = 1
-*/
 pokeApi.getPokemons(id - 1, 1).then((pokemons) => {
   const pokemon = pokemons[0];
-
-  /*
-    Inserimos o HTML na tela
-    */
   container.innerHTML = `
     <div class="card ${pokemon.type}">
-
-        <div class="top">
-            <h1 class="name">${pokemon.name}</h1>
-            <span class="number">#${pokemon.number}</span>
-
-            <img src="${pokemon.photo}" alt="${pokemon.name}">
+      <div class="top">
+        <h1 class="name">${pokemon.name}</h1>
+        <span class="number">#${pokemon.number}</span>
+        <img src="${pokemon.photo}" alt="${pokemon.name}">
+        <ul class="types">${pokemon.types.map((type) => `<li class="type">${type}</li>`).join('')}</ul>
+      </div>
+      <div class="bottom">
+        <div class="tabs">
+          <button class="active" type="button" onclick="showTab('about', this)">Sobre</button>
+          <button type="button" onclick="showTab('stats', this)">Status</button>
         </div>
-
-        <div class="bottom">
-            <div class="tabs">
-                <button onclick="showTab('about')">About</button>
-                <button onclick="showTab('stats')">Stats</button>
-            </div>
-
-            <div class="tab-content" id="about">
-                <p><strong>Height:</strong> ${pokemon.height}</p>
-                <p><strong>Weight:</strong> ${pokemon.weight}</p>
-            </div>
-
-            <div class="tab-content hidden" id="stats">
-                ${pokemon.stats.map(stat => `
-                    <div class="stat">
-                        <span>${stat.name}</span>
-                        <div class="bar">
-                            <div class="fill" style="width: ${stat.value / 2}%"></div>
-                        </div>
-                    </div>
-                `).join('')}
-            </div>
+        <div class="tab-content" id="about">
+          <p><strong>Altura</strong><br>${pokemon.height / 10} m</p>
+          <p><strong>Peso</strong><br>${pokemon.weight / 10} kg</p>
         </div>
+        <div class="tab-content hidden" id="stats">
+          ${pokemon.stats.map(stat => `<div class="stat"><div class="stat-info"><span>${stat.name.replace('-', ' ')}</span><span class="stat-value">${stat.value}</span></div><div class="bar"><div class="fill" style="width: ${Math.min(stat.value / 2, 100)}%"></div></div></div>`).join('')}
+        </div>
+      </div>
+    </div>`;
+}).catch(() => { container.innerHTML = '<p>Não foi possível carregar este Pokémon.</p>'; });
 
-    </div>
-`;
-  setTimeout(() => {
-    document.querySelectorAll('.fill').forEach(bar => {
-      bar.style.width = bar.dataset.value + '%'
-    })
-  }, 100);
-});
-/* Mostra uma aba e esconde a outra*/
-function showTab(tab) {
-    document.getElementById('about').classList.add('hidden')
-    document.getElementById('stats').classList.add('hidden')
-    document.getElementById(tab).classList.remove('hidden')
+function showTab(tab, button) {
+  document.getElementById('about').classList.add('hidden');
+  document.getElementById('stats').classList.add('hidden');
+  document.getElementById(tab).classList.remove('hidden');
+  document.querySelectorAll('.tabs button').forEach((item) => item.classList.remove('active'));
+  button.classList.add('active');
 }
